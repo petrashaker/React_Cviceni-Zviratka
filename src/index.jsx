@@ -1,20 +1,47 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { render } from 'react-dom';
+import AnimalDetail from './components/AnimalDetail';
+import AnimalList from './components/AnimalList';
 import './style.css';
 
-const App = () => (
-  <div className="container">
-    <header>
-      <div className="logo"></div>
-      <h1>Webová aplikace</h1>
-    </header>
-    <main>
-      <p>Startovací šablona pro webovou aplikaci v Reactu. Vytvořeno pomocí <a href="https://www.npmjs.com/package/create-czechitas-app">create-czechitas-app</a>.</p>
-    </main>
-    <footer>
-      <p>Czechitas, Digitální akademie: Web</p>
-    </footer>
-  </div>
-);
+const App = () =>{
+  const [data, setData] = useState()
+
+  const handleData = () => {
+    fetch('https://lrolecek.github.io/zviratka-api/zvirata.json')
+    .then(response => response.json())
+    .then(json => setData(json.zvirata))
+  }
+
+  useEffect(() => {
+    handleData()
+  }, [])
+
+  const[chosenAnimal, setChosenAnimal] = useState([])
+  const chooseAnimal = (chosenAnimal) => {
+    setChosenAnimal(chosenAnimal)
+  }
+  
+  const[zoo, setZoo] = useState()
+  const handleZoo = () => {
+    fetch('https://lrolecek.github.io/zviratka-api/zoo.json')
+    .then(response => response.json())
+    .then(json => setZoo(json.zoo))
+  }
+  useEffect(() => {
+    handleZoo()
+  }, [])
+  // console.log(zoo)
+
+  return (
+  <>
+	  <h1>Zvířátka v ZOO</h1>
+
+	  <div className="container"> 
+      {data && <AnimalList animals={data} onAnimalChange={chooseAnimal}/>}
+      {data && <AnimalDetail chosenAnimal={chosenAnimal} zoo={zoo}/>}
+    </div>
+  </>
+)};
 
 render(<App />, document.querySelector('#app'));
