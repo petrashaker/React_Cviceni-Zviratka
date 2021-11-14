@@ -2,6 +2,7 @@ import React from "react";
 import './style.css';
 
 const AnimalDetail = ({chosenAnimal, zoo}) => {
+
     return (
                <div className="detail" >
                <div className="detail__obsah">
@@ -36,10 +37,10 @@ const AnimalDetail = ({chosenAnimal, zoo}) => {
                                <h3>Velikost</h3>
                                <p>{chosenAnimal.velikost}</p>
                            </div>
-                           <div className="detail__udaj">
+                            <div className="detail__udaj">
                                <h3>Zoo</h3>
                                <p>{chosenAnimal.zoo}</p>
-                           </div>
+                            </div>
                        </div>
                    </div>
    

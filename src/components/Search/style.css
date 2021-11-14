@@ -1,0 +1,7 @@
+input {
+    width: 320px;
+    height: 30px;
+    position: relative;
+    left: 50%;
+    margin-left: -160px;
+}
