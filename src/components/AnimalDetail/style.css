@@ -1,5 +1,7 @@
 .detail {
     background-color: white;
+    grid-column: 2 / 3;
+    grid-row: 2;
   }
   
   .detail__hlavicka {

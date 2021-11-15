@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Animal from "../Animal";
+import './style.css';
 
 const AnimalList = ({animals, onAnimalChange, searchAnimals}) => {
     const handleChange = (objAnimal) => {

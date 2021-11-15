@@ -1,8 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import './style.css';
 
-const AnimalDetail = ({chosenAnimal, zoo}) => {
+const AnimalDetail = ({chosenAnimal, zooList}) => {
+    
+    //vypíšu jména jednotlivých ZOO
+    const arrayNames = zooList.map((i) => i.jmeno);
+    console.log(arrayNames)
 
+    //vypíšu čísla jednotlivých ZOO jednoho zvířete
+    const arrayNb = chosenAnimal.zoo.map((i) => i)
+    console.log(arrayNb)
+
+    //najdu první společný prvek - nevyužiju ?
+    // const connectArraysFind = arrayNb.find(element => element.id === arrayNb.id);
+    // console.log(connectArraysFind)
+
+    //najdu všechny společné prvky
+    const connectArraysFilter = arrayNb.filter(element => element.id === arrayNb.id);
+    console.log(connectArraysFilter)
+
+    //vypíšu jména zoo podle čísel zoo od zvířete
+    const names = connectArraysFilter.map(i => arrayNames[(i-1)]);
+    console.log(names.join())
+   
     return (
                <div className="detail" >
                <div className="detail__obsah">
@@ -39,8 +59,8 @@ const AnimalDetail = ({chosenAnimal, zoo}) => {
                            </div>
                             <div className="detail__udaj">
                                <h3>Zoo</h3>
-                               <p>{chosenAnimal.zoo}</p>
-                            </div>
+                               {names.map((name,id) => <p key={id}>{name}</p>)}
+                            </div> 
                        </div>
                    </div>
    

@@ -43,17 +43,15 @@ const App = () =>{
   useEffect(() => {
     handleZoo()
   }, [])
-
+  console.log(zoo)
   
   return (
   <>
 	  <h1>Zvířátka v ZOO</h1>
-    
-    <Search placeholder="Vyber si své zvířátko" onSearch={findAnimal} animals={data}/>
-	  
     <div className="container"> 
+      <Search placeholder="Vyber si své zvířátko" onSearch={findAnimal} animals={data}/>
       {data && <AnimalList animals={data} onAnimalChange={chooseAnimal} searchAnimals={searchAnimals}/>}
-      {chosenAnimal != '' ? <AnimalDetail chosenAnimal={chosenAnimal} zoo={zoo}/> : null}
+      {chosenAnimal != '' ? <AnimalDetail chosenAnimal={chosenAnimal} zooList={zoo}/> : null}
     </div>
   </>
 )};

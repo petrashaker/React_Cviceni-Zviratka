@@ -14,7 +14,6 @@ const Search = ({placeholder, onSearch, animals}) => {
         setFilteredAnimal(newFilter);
         onSearch(filteredAnimal);
     }
-    console.log(filteredAnimal)
 
     return (
         <input className="input" type="text" onChange={handleText} placeholder={placeholder} />
